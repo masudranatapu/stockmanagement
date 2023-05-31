@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class SetLangMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,13 +16,14 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // return $next($request);
-        
-        if (Auth::check() && Auth::user()->role->id == 1)
-        {
-            return $next($request);
-        }else{
-            return redirect()->route('login');
+        // dd(session()->get('set_lang'));
+
+        if (session()->has('set_lang')) {
+            app()->setLocale(session('set_lang'));
+        } else {
+            app()->setLocale(env('APP_DEFAULT_LANGUAGE'));
         }
+
+        return $next($request);
     }
 }

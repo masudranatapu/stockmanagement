@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\StockController;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('home');
 
+// lang change 
 Route::get('changelanguage/{lang}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
 
 Auth::routes();

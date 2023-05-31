@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
+use Artisan;
 
 class HomeController extends Controller
 {
@@ -11,13 +13,14 @@ class HomeController extends Controller
         $title = "Home";
         return view('welcome', compact('title'));
     }
-
-
+    
     public function changeLanguage($lang)
     {
         session()->put('set_lang', $lang);
         app()->setLocale($lang);
-        
-        return redirect()->back();
+
+        return back();
+
     }
+
 }

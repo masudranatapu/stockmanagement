@@ -44,7 +44,12 @@
                                 </li>
                             @endif
                         @else
-                        
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-success text-white me-3" href="{{ route('changeLanguage', 'en') }}">{{ __('English') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-success text-white me-3" href="{{ route('changeLanguage', 'bn') }}">{{ __('Bangla') }}</a>
+                            </li>
                             @if(Auth::user()->role->id == 1)
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-success text-white me-3" href="{{ route('admin.products.index') }}">{{ __('Product') }}</a>
